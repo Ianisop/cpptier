@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/fishy/Documents/cpptier/src/c_tier_server.cpp" "CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o" "gcc" "CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o.d"
   "/home/fishy/Documents/cpptier/src/server/server.cpp" "CMakeFiles/ctier_server.dir/src/server/server.cpp.o" "gcc" "CMakeFiles/ctier_server.dir/src/server/server.cpp.o.d"
   "/home/fishy/Documents/cpptier/src/socket/websock.cpp" "CMakeFiles/ctier_server.dir/src/socket/websock.cpp.o" "gcc" "CMakeFiles/ctier_server.dir/src/socket/websock.cpp.o.d"
   "" "bin/ctier_server" "gcc" "CMakeFiles/ctier_server.dir/link.d"

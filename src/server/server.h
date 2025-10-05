@@ -52,6 +52,8 @@ namespace ctier
             return _listening_socket->receive(buffer, size);
         }
 
+        void stop() { _listening_socket->close_socket(false); }
+
         // automatically deletes the WebSock instance
         ~Server() = default;
     };

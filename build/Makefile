@@ -143,6 +143,54 @@ ctier_client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_client.dir/build.make CMakeFiles/ctier_client.dir/build
 .PHONY : ctier_client/fast
 
+src/c_tier_client.o: src/c_tier_client.cpp.o
+.PHONY : src/c_tier_client.o
+
+# target to build an object file
+src/c_tier_client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_client.dir/build.make CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o
+.PHONY : src/c_tier_client.cpp.o
+
+src/c_tier_client.i: src/c_tier_client.cpp.i
+.PHONY : src/c_tier_client.i
+
+# target to preprocess a source file
+src/c_tier_client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_client.dir/build.make CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.i
+.PHONY : src/c_tier_client.cpp.i
+
+src/c_tier_client.s: src/c_tier_client.cpp.s
+.PHONY : src/c_tier_client.s
+
+# target to generate assembly for a file
+src/c_tier_client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_client.dir/build.make CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.s
+.PHONY : src/c_tier_client.cpp.s
+
+src/c_tier_server.o: src/c_tier_server.cpp.o
+.PHONY : src/c_tier_server.o
+
+# target to build an object file
+src/c_tier_server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_server.dir/build.make CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o
+.PHONY : src/c_tier_server.cpp.o
+
+src/c_tier_server.i: src/c_tier_server.cpp.i
+.PHONY : src/c_tier_server.i
+
+# target to preprocess a source file
+src/c_tier_server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_server.dir/build.make CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.i
+.PHONY : src/c_tier_server.cpp.i
+
+src/c_tier_server.s: src/c_tier_server.cpp.s
+.PHONY : src/c_tier_server.s
+
+# target to generate assembly for a file
+src/c_tier_server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_server.dir/build.make CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.s
+.PHONY : src/c_tier_server.cpp.s
+
 src/client/client.o: src/client/client.cpp.o
 .PHONY : src/client/client.o
 
@@ -228,6 +276,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... ctier_client"
 	@echo "... ctier_server"
+	@echo "... src/c_tier_client.o"
+	@echo "... src/c_tier_client.i"
+	@echo "... src/c_tier_client.s"
+	@echo "... src/c_tier_server.o"
+	@echo "... src/c_tier_server.i"
+	@echo "... src/c_tier_server.s"
 	@echo "... src/client/client.o"
 	@echo "... src/client/client.i"
 	@echo "... src/client/client.s"

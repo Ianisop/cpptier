@@ -2,6 +2,7 @@ bin/ctier_server: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
+  CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o \
   CMakeFiles/ctier_server.dir/src/server/server.cpp.o \
   CMakeFiles/ctier_server.dir/src/socket/websock.cpp.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
@@ -37,6 +38,8 @@ bin/ctier_server: \
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o:
+
+CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o:
 
 CMakeFiles/ctier_server.dir/src/server/server.cpp.o:
 

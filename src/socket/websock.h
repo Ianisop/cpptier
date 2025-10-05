@@ -12,9 +12,7 @@
 #include <error.h>
 #include <netinet/in.h>
 #include <stdio.h>
-
-#include <algorithm>
-
+#include <unistd.h>
 namespace ctier
 {
     class WebSock
@@ -35,13 +33,12 @@ namespace ctier
             }
         }
         WebSock(int clientFD) : _socket(clientFD) {}
-        // should be used for clients
-        bool connect(const char* address, const char* port);
-        // should be used for servers
-        bool bind(const char* address, const char* port);
+        bool connect(const char* address, const char* port);  // should be used for clients
+        bool bind(const char* address, const char* port);     // should be used for servers
         bool send(const char* data, size_t size);
         bool receive(char* buffer, size_t size);
         bool listen(int backlog = 5);
+        void close_socket(bool reuse);
         int  accept(sockaddr_in* clientAddr = nullptr);
     };
 }  // namespace ctier

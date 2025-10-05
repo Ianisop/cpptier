@@ -1,5 +1,7 @@
 #include "websock.h"
 
+#include <signal.h>
+
 #include <iostream>
 bool ctier::WebSock::receive(char* buffer, size_t size)
 {
@@ -71,7 +73,11 @@ bool ctier::WebSock::listen(int backlog)
 {
     return ::listen(_socket, backlog) == 0;
 }
-
+void ctier::WebSock::close_socket(bool reuse)
+{
+    close(_socket);
+    signal(SIGCHLD, SIG_IGN);
+}
 int ctier::WebSock::accept(sockaddr_in* clientAddr)
 {
     socklen_t len = clientAddr ? sizeof(*clientAddr) : 0;

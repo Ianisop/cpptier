@@ -72,10 +72,24 @@ include CMakeFiles/ctier_client.dir/flags.make
 CMakeFiles/ctier_client.dir/codegen:
 .PHONY : CMakeFiles/ctier_client.dir/codegen
 
+CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o: CMakeFiles/ctier_client.dir/flags.make
+CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o: /home/fishy/Documents/cpptier/src/c_tier_client.cpp
+CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o: CMakeFiles/ctier_client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o -MF CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o.d -o CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o -c /home/fishy/Documents/cpptier/src/c_tier_client.cpp
+
+CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/fishy/Documents/cpptier/src/c_tier_client.cpp > CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.i
+
+CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/fishy/Documents/cpptier/src/c_tier_client.cpp -o CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.s
+
 CMakeFiles/ctier_client.dir/src/client/client.cpp.o: CMakeFiles/ctier_client.dir/flags.make
 CMakeFiles/ctier_client.dir/src/client/client.cpp.o: /home/fishy/Documents/cpptier/src/client/client.cpp
 CMakeFiles/ctier_client.dir/src/client/client.cpp.o: CMakeFiles/ctier_client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ctier_client.dir/src/client/client.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ctier_client.dir/src/client/client.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ctier_client.dir/src/client/client.cpp.o -MF CMakeFiles/ctier_client.dir/src/client/client.cpp.o.d -o CMakeFiles/ctier_client.dir/src/client/client.cpp.o -c /home/fishy/Documents/cpptier/src/client/client.cpp
 
 CMakeFiles/ctier_client.dir/src/client/client.cpp.i: cmake_force
@@ -89,7 +103,7 @@ CMakeFiles/ctier_client.dir/src/client/client.cpp.s: cmake_force
 CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o: CMakeFiles/ctier_client.dir/flags.make
 CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o: /home/fishy/Documents/cpptier/src/socket/websock.cpp
 CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o: CMakeFiles/ctier_client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o -MF CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o.d -o CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o -c /home/fishy/Documents/cpptier/src/socket/websock.cpp
 
 CMakeFiles/ctier_client.dir/src/socket/websock.cpp.i: cmake_force
@@ -102,18 +116,20 @@ CMakeFiles/ctier_client.dir/src/socket/websock.cpp.s: cmake_force
 
 # Object files for target ctier_client
 ctier_client_OBJECTS = \
+"CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o" \
 "CMakeFiles/ctier_client.dir/src/client/client.cpp.o" \
 "CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o"
 
 # External object files for target ctier_client
 ctier_client_EXTERNAL_OBJECTS =
 
+bin/ctier_client: CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o
 bin/ctier_client: CMakeFiles/ctier_client.dir/src/client/client.cpp.o
 bin/ctier_client: CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o
 bin/ctier_client: CMakeFiles/ctier_client.dir/build.make
 bin/ctier_client: CMakeFiles/ctier_client.dir/compiler_depend.ts
 bin/ctier_client: CMakeFiles/ctier_client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable bin/ctier_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable bin/ctier_client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ctier_client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

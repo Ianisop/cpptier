@@ -88,12 +88,12 @@ clean: CMakeFiles/ctier_client.dir/clean
 CMakeFiles/ctier_server.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_server.dir/build.make CMakeFiles/ctier_server.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_server.dir/build.make CMakeFiles/ctier_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=4,5,6 "Built target ctier_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=5,6,7,8 "Built target ctier_server"
 .PHONY : CMakeFiles/ctier_server.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ctier_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fishy/Documents/cpptier/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fishy/Documents/cpptier/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ctier_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fishy/Documents/cpptier/build/CMakeFiles 0
 .PHONY : CMakeFiles/ctier_server.dir/rule
@@ -105,7 +105,7 @@ ctier_server: CMakeFiles/ctier_server.dir/rule
 # codegen rule for target.
 CMakeFiles/ctier_server.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_server.dir/build.make CMakeFiles/ctier_server.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=4,5,6 "Finished codegen for target ctier_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=5,6,7,8 "Finished codegen for target ctier_server"
 .PHONY : CMakeFiles/ctier_server.dir/codegen
 
 # clean rule for target.
@@ -120,12 +120,12 @@ CMakeFiles/ctier_server.dir/clean:
 CMakeFiles/ctier_client.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_client.dir/build.make CMakeFiles/ctier_client.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_client.dir/build.make CMakeFiles/ctier_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=1,2,3 "Built target ctier_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=1,2,3,4 "Built target ctier_client"
 .PHONY : CMakeFiles/ctier_client.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ctier_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fishy/Documents/cpptier/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fishy/Documents/cpptier/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ctier_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fishy/Documents/cpptier/build/CMakeFiles 0
 .PHONY : CMakeFiles/ctier_client.dir/rule
@@ -137,7 +137,7 @@ ctier_client: CMakeFiles/ctier_client.dir/rule
 # codegen rule for target.
 CMakeFiles/ctier_client.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ctier_client.dir/build.make CMakeFiles/ctier_client.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=1,2,3 "Finished codegen for target ctier_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/fishy/Documents/cpptier/build/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target ctier_client"
 .PHONY : CMakeFiles/ctier_client.dir/codegen
 
 # clean rule for target.

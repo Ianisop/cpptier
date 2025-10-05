@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ctier_server.dir/link.d"
+  "CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o"
+  "CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o.d"
   "CMakeFiles/ctier_server.dir/src/server/server.cpp.o"
   "CMakeFiles/ctier_server.dir/src/server/server.cpp.o.d"
   "CMakeFiles/ctier_server.dir/src/socket/websock.cpp.o"

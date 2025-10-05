@@ -12,8 +12,8 @@ file(GLOB_RECURSE SERVER_SOURCES CONFIGURE_DEPENDS src/server/*.cpp src/socket/*
 file(GLOB_RECURSE CLIENT_SOURCES CONFIGURE_DEPENDS src/client/*.cpp src/socket/*.cpp)
 
 # Build executables
-add_executable(ctier_server ${SERVER_SOURCES})
-add_executable(ctier_client ${CLIENT_SOURCES})
+add_executable(ctier_server src/c_tier_server.cpp ${SERVER_SOURCES})
+add_executable(ctier_client src/c_tier_client.cpp ${CLIENT_SOURCES})
 
 # Include paths
 target_include_directories(ctier_server PRIVATE src/socket)
