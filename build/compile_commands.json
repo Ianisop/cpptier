@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/fishy/Documents/cpptier/build",
+  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/include -I/home/fishy/Documents/cpptier/src/socket/include -I/home/fishy/Documents/cpptier/src/socket -I/ -O3 -DNDEBUG -std=gnu++20 -fPIE -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/ctier_server.dir/src/server/server.cpp.o -c /home/fishy/Documents/cpptier/src/server/server.cpp",
+  "file": "/home/fishy/Documents/cpptier/src/server/server.cpp",
+  "output": "CMakeFiles/ctier_server.dir/src/server/server.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build",
+  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/include -I/home/fishy/Documents/cpptier/src/socket/include -I/home/fishy/Documents/cpptier/src/socket -I/ -O3 -DNDEBUG -std=gnu++20 -fPIE -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/ctier_client.dir/src/client/client.cpp.o -c /home/fishy/Documents/cpptier/src/client/client.cpp",
+  "file": "/home/fishy/Documents/cpptier/src/client/client.cpp",
+  "output": "CMakeFiles/ctier_client.dir/src/client/client.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build/src/socket",
+  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -I/ -I/home/fishy/Documents/cpptier/src/socket/include -O3 -DNDEBUG -std=gnu++20 -fPIC - Wall Wextra Wpedantic -o CMakeFiles/fishsock.dir/websock.cpp.o -c /home/fishy/Documents/cpptier/src/socket/websock.cpp",
+  "file": "/home/fishy/Documents/cpptier/src/socket/websock.cpp",
+  "output": "src/socket/CMakeFiles/fishsock.dir/websock.cpp.o"
+}
+]

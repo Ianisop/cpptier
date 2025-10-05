@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libfishsock.a CMakeFiles/fishsock.dir/websock.cpp.o
+/usr/bin/ranlib ../../lib/libfishsock.a

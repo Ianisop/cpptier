@@ -1,0 +1,6 @@
+# Ignore everything except C/C++
+*.json
+*.yaml
+*.md
+*.proto
+.gitignore

@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/ctier_client.dir/link.d CMakeFiles/ctier_client.dir/src/client/client.cpp.o CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o -o bin/ctier_client

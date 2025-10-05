@@ -1,0 +1,70 @@
+---
+BasedOnStyle: Google
+Language: Cpp
+
+# General
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 120
+AccessModifierOffset: -2
+AlignAfterOpenBracket: Align
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: False
+
+# Braces and indentationz
+BreakBeforeBraces: Allman
+BraceWrapping:
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  BeforeElse: true
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+
+# Includes
+#IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^<.*\.h>'
+    Priority: 1
+  - Regex: '^<.*>'
+    Priority: 2
+  - Regex: '.*'
+    Priority: 3
+SortIncludes: true
+
+# Names and spacing
+SpacesInParentheses: false
+SpaceAfterCStyleCast: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceInEmptyParentheses: false
+PointerAlignment: Left
+
+# Comments
+ReflowComments: true
+SpacesBeforeTrailingComments: 2
+
+# Namespace and alignment
+NamespaceIndentation: All
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignConsecutiveMacros: true
+
+# Trailing commas and lists
+Cpp11BracedListStyle: true
+BinPackArguments: false
+BinPackParameters: false
+
+# Function declarations
+AlignTrailingComments: true
+AllowAllArgumentsOnNextLine: false
+BreakConstructorInitializers: AfterColon
+
+# Cleanup
+KeepEmptyLinesAtTheStartOfBlocks: false
+...
