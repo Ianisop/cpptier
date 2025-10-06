@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/fishy/Documents/cpptier/build",
+  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o -c /home/fishy/Documents/cpptier/src/c_tier_server.cpp",
+  "file": "/home/fishy/Documents/cpptier/src/c_tier_server.cpp",
+  "output": "CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build",
+  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_server.dir/src/server/server.cpp.o -c /home/fishy/Documents/cpptier/src/server/server.cpp",
+  "file": "/home/fishy/Documents/cpptier/src/server/server.cpp",
+  "output": "CMakeFiles/ctier_server.dir/src/server/server.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build",
+  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_server.dir/src/socket/websock.cpp.o -c /home/fishy/Documents/cpptier/src/socket/websock.cpp",
+  "file": "/home/fishy/Documents/cpptier/src/socket/websock.cpp",
+  "output": "CMakeFiles/ctier_server.dir/src/socket/websock.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build",
+  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o -c /home/fishy/Documents/cpptier/src/c_tier_client.cpp",
+  "file": "/home/fishy/Documents/cpptier/src/c_tier_client.cpp",
+  "output": "CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build",
+  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_client.dir/src/client/client.cpp.o -c /home/fishy/Documents/cpptier/src/client/client.cpp",
+  "file": "/home/fishy/Documents/cpptier/src/client/client.cpp",
+  "output": "CMakeFiles/ctier_client.dir/src/client/client.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build",
+  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o -c /home/fishy/Documents/cpptier/src/socket/websock.cpp",
+  "file": "/home/fishy/Documents/cpptier/src/socket/websock.cpp",
+  "output": "CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o"
+}
+]

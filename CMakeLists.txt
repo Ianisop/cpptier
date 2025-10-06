@@ -7,13 +7,18 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-#Gather sources
-file(GLOB_RECURSE SERVER_SOURCES CONFIGURE_DEPENDS src/server/*.cpp src/socket/*.cpp)
-file(GLOB_RECURSE CLIENT_SOURCES CONFIGURE_DEPENDS src/client/*.cpp src/socket/*.cpp)
 
 # Build executables
-add_executable(ctier_server src/c_tier_server.cpp ${SERVER_SOURCES})
-add_executable(ctier_client src/c_tier_client.cpp ${CLIENT_SOURCES})
+add_executable(ctier_server
+    src/c_tier_server.cpp
+    src/server/server.cpp
+    src/socket/websock.cpp
+)
+add_executable(ctier_client
+    src/c_tier_client.cpp
+    src/client/client.cpp
+    src/socket/websock.cpp
+)
 
 # Include paths
 target_include_directories(ctier_server PRIVATE src/socket)
