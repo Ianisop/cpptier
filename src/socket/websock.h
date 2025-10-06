@@ -24,9 +24,8 @@ namespace ctier
     {
       private:
 #if IS_WINDOWS
-        SOCKET  _socket = INVALID_SOCKET;
-        WSADATA _wsa_data{};
-        int     iResult = 0;
+        SOCKET _socket = INVALID_SOCKET;
+        int    iResult = 0;
 #else
         int _socket = -1;
 #endif
@@ -35,11 +34,7 @@ namespace ctier
         WebSock(int domain, int type, int protocol)
         {
 #if IS_WINDOWS
-            iResult = WSAStartup(MAKEWORD(2, 2), &_wsa_data);
-            if (iResult != 0)
-            {
-                printf("WSAStartup failed: %d\n", iResult);
-            }
+
             _socket = socket(domain, type, protocol);
 #else
             _socket = socket(domain, type, protocol);

@@ -90,7 +90,6 @@ bool ctier::WebSock::disconnect()
 {
 #if IS_WINDOWS
     closesocket(_socket);
-    WSACleanup();
 #endif
     return true;
 }
@@ -113,19 +112,22 @@ bool ctier::WebSock::bind(const char* address, const char* port, bool server = t
 {
 #if IS_WINDOWS
     addrinfo hints{};
-    hints.ai_family = AF_INET;       // IPv4
-    hints.ai_socktype = SOCK_STREAM; // TCP
-    if(server) hints.ai_flags = AI_PASSIVE;     // For server
+    hints.ai_family   = AF_INET;      // IPv4
+    hints.ai_socktype = SOCK_STREAM;  // TCP
+    if (server)
+        hints.ai_flags = AI_PASSIVE;  // For server
 
     addrinfo* result = nullptr;
-    iResult = getaddrinfo(address, port, &hints, &result);
-    if (iResult != 0) {
+    iResult          = getaddrinfo(address, port, &hints, &result);
+    if (iResult != 0)
+    {
         printf("getaddrinfo failed: %d\n", iResult);
         return false;
     }
 
-    iResult = ::bind(_socket, result->ai_addr, (int)result->ai_addrlen);
-    if (iResult == SOCKET_ERROR) {
+    iResult = ::bind(_socket, result->ai_addr, (int) result->ai_addrlen);
+    if (iResult == SOCKET_ERROR)
+    {
         printf("bind failed with error: %d\n", WSAGetLastError());
         freeaddrinfo(result);
         return false;
@@ -140,7 +142,8 @@ bool ctier::WebSock::bind(const char* address, const char* port, bool server = t
     if (inet_pton(AF_INET, address, &hint.sin_addr) <= 0)
         return false;
 
-    if (::bind(_socket, reinterpret_cast<sockaddr*>(&hint), sizeof(hint)) < 0) {
+    if (::bind(_socket, reinterpret_cast<sockaddr*>(&hint), sizeof(hint)) < 0)
+    {
         perror("bind failed");
         return false;
     }
@@ -149,7 +152,6 @@ bool ctier::WebSock::bind(const char* address, const char* port, bool server = t
     std::cout << "Bound to " << address << ":" << port << "\n";
     return true;
 }
-
 
 int ctier::WebSock::accept(sockaddr_in* clientAddr)
 {
