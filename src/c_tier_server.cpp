@@ -58,6 +58,6 @@ int main()
         std::cerr << "Server initialization failed: " << e.what() << std::endl;
         return 1;
     }
-
+    ctier::WebSock::cleanup();
     return 0;
 }

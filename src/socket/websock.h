@@ -1,89 +1,56 @@
 #pragma once
+
 #if defined(_WIN32) || defined(_WIN64)
 #define IS_WINDOWS 1
-#else
-#define IS_WINDOWS 0
-#endif
-
-#if IS_WINDOWS
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#pragma comment(lib, "Ws2_32.lib")
 #else
+#define IS_WINDOWS 0
 #include <arpa/inet.h>
+#include <netdb.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include <sys/types.h>
 #include <unistd.h>
+
+#include <cerrno>
+#include <cstring>
 #endif
 
-#include <cstdio>
+#include <cstddef>
 
 namespace ctier
 {
 
     class WebSock
     {
+     
+      public:
+        WebSock(int domain, int type, int protocol);
+        WebSock(int fd);
+        ~WebSock();
+
+        bool    create(int domain = AF_INET, int type = SOCK_STREAM, int protocol = 0);
+        bool    bind(const char* address, const char* port);
+        bool    listen(int backlog = 5);
+        int     accept(sockaddr_in* clientAddr = nullptr);
+        bool    connect(const char* address, const char* port);
+        bool    send(const char* buffer, size_t size);
+        int receive(char* buffer, size_t size);
+        void    close_socket();
+        static void    cleanup();
+        bool    valid() const;
+
       private:
 #if IS_WINDOWS
-        SOCKET  _socket = INVALID_SOCKET;
-        WSADATA _wsa_data{};
-        int     iResult = 0;
+        using socket_t                                 = SOCKET;
+        static constexpr socket_t INVALID_SOCKET_VALUE = INVALID_SOCKET;
 #else
-        int _socket = -1;
+        using socket_t                                 = int;
+        static constexpr socket_t INVALID_SOCKET_VALUE = -1;
 #endif
-
-      public:
-        WebSock(int domain, int type, int protocol)
-        {
-#if IS_WINDOWS
-            iResult = WSAStartup(MAKEWORD(2, 2), &_wsa_data);
-            if (iResult != 0)
-            {
-                printf("WSAStartup failed: %d\n", iResult);
-            }
-            _socket = socket(domain, type, protocol);
-#else
-            _socket = socket(domain, type, protocol);
-#endif
-        }
-
-
-       // Fix for E0109: _socket is a variable, not a function.
-       // The correct way to assign the socket handle is direct assignment.
-       explicit WebSock(int clientFD)
-       {
-       #if IS_WINDOWS
-           iResult = WSAStartup(MAKEWORD(2, 2), &_wsa_data);
-           if (iResult != 0)
-           {
-               printf("WSAStartup failed: %d\n", iResult);
-           }
-           _socket = clientFD;
-       #else
-           _socket = clientFD;
-       #endif
-       }
-
-        ~WebSock()
-        {
-#if IS_WINDOWS
-            if (_socket != INVALID_SOCKET)
-                closesocket(_socket);
-            WSACleanup();
-#else
-            if (_socket >= 0)
-                close(_socket);
-#endif
-        }
-
-        bool connect(const char* address, const char* port);
-        bool bind(const char* address, const char* port);
-        bool send(const char* data, size_t size);
-        bool receive(char* buffer, size_t size);
-        bool listen(int backlog = 5);
-        void close_socket(bool reuse = false);
-        int  accept(sockaddr_in* clientAddr = nullptr);
-        bool disconnect();
-        bool suspend();
+        socket_t _socket;
     };
 
 }  // namespace ctier

@@ -18,7 +18,7 @@ namespace ctier
         Server(const char* address, const char* port, int domain, int type, int protocol) :
             _listening_socket(std::make_unique<WebSock>(domain, type, protocol))
         {
-            if (!_listening_socket->bind(address, port, true))
+            if (!_listening_socket->bind(address, port))
                 throw std::runtime_error("Bind failed");
 
             if (!_listening_socket->listen())
@@ -52,7 +52,7 @@ namespace ctier
             return _listening_socket->receive(buffer, size);
         }
 
-        void stop() { _listening_socket->close_socket(false); }
+        void stop() { _listening_socket->close_socket(); }
 
         // automatically deletes the WebSock instance
         ~Server() = default;

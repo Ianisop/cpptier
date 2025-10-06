@@ -1,197 +1,130 @@
-#if defined(_WIN32) || defined(_WIN64)
-#define IS_WINDOWS 1
-#else
-#define IS_WINDOWS 0
-#endif
-
 #include "websock.h"
 
-#if IS_WINDOWS
-#include <BaseTsd.h>
-
-#endif
-
-#include <signal.h>
-
+#include <cstdlib>
 #include <iostream>
+#include <stdexcept>
 
-
-bool ctier::WebSock::receive(char* buffer, size_t size)
+namespace ctier
 {
-    if (!_socket)
-        return false;
-
-    auto bytes = ::recv(_socket, buffer, size, 0);
-    if (bytes <= 0)
-        return false;  // connection closed or error
-    std::cout << "waiting for data!\n";
-    buffer[bytes] = '\0';  // null-terminate if you expect string
-    return true;
-}
-
-bool ctier::WebSock::send(const char* buffer, size_t size)
-{
-    if (!_socket)
-        return false;
-
-    auto bytesSent = ::send(_socket, buffer, size, 0);
-    if (bytesSent !=  size)
-        return false;  // partial send or error
-
-    return true;
-}
-bool ctier::WebSock::connect(const char* address, const char* port)
-{
-    #if IS_WINDOWS
-    const sockaddr* addr = nullptr;
-    addrinfo        hints{};
-    addrinfo*       result  = nullptr;
-
-    auto iResult              = getaddrinfo(address, port, &hints, &result);
-    if (iResult != 0)
+    static int g_wsa_initialized = 0;
+    WebSock::WebSock(int domain, int type, int protocol) : _socket(INVALID_SOCKET_VALUE)
     {
-        printf("getaddrinfo failed: %d\n", iResult);
-        WSACleanup();
-        return false;
-    }
-
-    iResult = ::connect(_socket, result->ai_addr, (int) result->ai_addrlen);
-
-    if (iResult != 0)
-    {
-        printf("connect failed: %d\n", iResult);
-        freeaddrinfo(result);
-        WSACleanup();
-        return false;
-    }
-    #else 
-    u_short     port_num = static_cast<u_short>(std::atoi(port));
-    sockaddr_in server_addr{};
-    server_addr.sin_family = AF_INET;
-    server_addr.sin_port   = htons(port_num);
-
-    if (inet_aton(address, &server_addr.sin_addr) == 0)
-    {
-        std::cerr << "Invalid address: " << address << "\n";
-        return false;
-    }
-
-    if (::connect(_socket, reinterpret_cast<sockaddr*>(&server_addr), sizeof(server_addr)) < 0)
-    {
-        perror("connect failed");
-        return false;
-    }
-    #endif
-    return true;
-}
-
-bool ctier::WebSock::disconnect()
-{
-    closesocket(_socket);
-    WSACleanup();
-    return true;
-}
-
-bool ctier::WebSock::suspend()
-{
-    iResult = shutdown(_socket, SD_SEND);
-    if (iResult == SOCKET_ERROR)
-    {
-        printf("shutdown failed: %d\n", WSAGetLastError());
-        closesocket(_socket);
-        WSACleanup();
-        return false;
-    }
-    return true;
-}
-// used to set the servers hosting address up, usually 0.0.0.0 but you can be more specific
-bool ctier::WebSock::bind(const char* address, const char* port)
-{
-    #if IS_WINDOWS
-    const sockaddr* addr = nullptr; 
-    addrinfo        hints{};
-    addrinfo*       result  = nullptr;
-    getaddrinfo(address, port, &hints, &result);
-
-    iResult = ::bind(_socket, result->ai_addr, (int) result->ai_addrlen);
-
-    if (iResult == SOCKET_ERROR)
-    {
-        printf("bind failed with error: %d\n", WSAGetLastError());
-        freeaddrinfo(result);
-        closesocket(_socket);
-        WSACleanup();
-        return false;
-    }
-    #else
-    u_short port_num = static_cast<u_short>(std::atoi(port));
-
-    sockaddr_in hint{};
-    hint.sin_family = AF_INET;
-    hint.sin_port   = htons(port_num);
-
-    if (inet_aton(address, &hint.sin_addr) == 0)
-        return false;
-
-    if (::bind(_socket, reinterpret_cast<sockaddr*>(&hint), sizeof(hint)) < 0)
-    {
-        perror("bind failed");
-        return false;
-    }
-    #endif
-
-    return true;
-}
-
-int ctier::WebSock::accept(sockaddr_in* clientAddr)
-{
 #if IS_WINDOWS
-    if (_socket == INVALID_SOCKET)
-        return INVALID_SOCKET;
-
-    int    len = clientAddr ? sizeof(*clientAddr) : 0;
-    SOCKET clientSock =
-        ::accept(_socket, clientAddr ? reinterpret_cast<sockaddr*>(clientAddr) : nullptr, clientAddr ? &len : nullptr);
-    if (clientSock == INVALID_SOCKET)
-    {
-        printf("Accept failed: %d\n", WSAGetLastError());
+        if (g_wsa_initialized == 0)
+        {
+            WSADATA wsaData;
+            if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
+                throw std::runtime_error("WSAStartup failed");
+#endif 
+            g_wsa_initialized = 1;
+        }
+        create(domain, type, protocol);
     }
-    return static_cast<int>(clientSock);  // convert SOCKET to int
+    
+    WebSock::WebSock(int fd) : _socket(static_cast<socket_t>(fd)) {}
+    WebSock::~WebSock()
+    {
+        close_socket();
+    }
+
+    bool WebSock::create(int domain, int type, int protocol)
+    {
+#if IS_WINDOWS
+        _socket = ::socket(domain, type, protocol);
+        return _socket != INVALID_SOCKET;
 #else
-    if (_socket < 0)
-        return -1;
-
-    socklen_t len = clientAddr ? sizeof(*clientAddr) : 0;
-    int       clientSock =
-        ::accept(_socket, clientAddr ? reinterpret_cast<sockaddr*>(clientAddr) : nullptr, clientAddr ? &len : nullptr);
-    if (clientSock < 0)
-    {
-        perror("Accept failed");
-    }
-    return clientSock;
+        _socket = ::socket(domain, type, protocol);
+        return _socket >= 0;
 #endif
-}
-
-
-bool ctier::WebSock::listen(int backlog)
-{
-    if (::listen(_socket, backlog) == SOCKET_ERROR)
-    {
-        printf("Listen failed with error: %ld\n", WSAGetLastError());
-        closesocket(_socket);
-        WSACleanup();
-        return false;
     }
-    return true;
-}
-void ctier::WebSock::close_socket(bool reuse)
-{
-    #if IS_WINDOWS
-    closesocket(_socket);
-    WSACleanup();
-    #else
-    close(_socket);
-    signal(SIGCHLD, SIG_IGN);
-    #endif
-}
 
+    bool WebSock::bind(const char* address, const char* port)
+    {
+        struct addrinfo hints{}, *res = nullptr;
+        hints.ai_family   = AF_INET;
+        hints.ai_socktype = SOCK_STREAM;
+        hints.ai_flags    = AI_PASSIVE;
+
+        if (getaddrinfo(address, port, &hints, &res) != 0)
+            return false;
+
+        bool ok = (::bind(_socket, res->ai_addr, (socklen_t) res->ai_addrlen) == 0);
+        freeaddrinfo(res);
+        return ok;
+    }
+
+    bool WebSock::listen(int backlog)
+    {
+        return (::listen(_socket, backlog) == 0);
+    }
+
+    int WebSock::accept(sockaddr_in* clientAddr)
+    {
+        socklen_t len    = clientAddr ? sizeof(*clientAddr) : 0;
+        auto      client = ::accept(_socket,
+                               clientAddr ? reinterpret_cast<sockaddr*>(clientAddr) : nullptr,
+                               clientAddr ? &len : nullptr);
+#if IS_WINDOWS
+        return (client == INVALID_SOCKET) ? -1 : static_cast<int>(client);
+#else
+        return client;
+#endif
+    }
+
+    bool WebSock::connect(const char* address, const char* port)
+    {
+        struct addrinfo hints{}, *res = nullptr;
+        hints.ai_family   = AF_UNSPEC;
+        hints.ai_socktype = SOCK_STREAM;
+
+        if (getaddrinfo(address, port, &hints, &res) != 0)
+            return false;
+
+        bool ok = (::connect(_socket, res->ai_addr, (socklen_t) res->ai_addrlen) == 0);
+        freeaddrinfo(res);
+        return ok;
+    }
+
+    bool WebSock::send(const char* buffer, size_t size)
+    {
+        if (!valid())
+            return false;
+        int sent = ::send(_socket, buffer, (int) size, 0);
+        return (sent == (int) size);
+    }
+
+    int WebSock::receive(char* buffer, size_t size)
+    {
+        if (!valid())
+            return -1;
+        return ::recv(_socket, buffer, (int) size, 0);
+    }
+
+    void WebSock::close_socket()
+    {
+        if (!valid())
+            return;
+#if IS_WINDOWS
+        ::closesocket(_socket);
+#else
+        ::close(_socket);
+#endif
+        _socket = INVALID_SOCKET_VALUE;
+    }
+
+    void WebSock::cleanup()
+    {
+#if IS_WINDOWS
+        WSACleanup();
+#endif
+    }
+    bool WebSock::valid() const
+    {
+#if IS_WINDOWS
+        return _socket != INVALID_SOCKET;
+#else
+        return _socket >= 0;
+#endif
+    }
+
+}  // namespace ctier
