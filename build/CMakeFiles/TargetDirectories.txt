@@ -1,4 +1,0 @@
-/home/fishy/Documents/cpptier/build/CMakeFiles/ctier_server.dir
-/home/fishy/Documents/cpptier/build/CMakeFiles/ctier_client.dir
-/home/fishy/Documents/cpptier/build/CMakeFiles/edit_cache.dir
-/home/fishy/Documents/cpptier/build/CMakeFiles/rebuild_cache.dir

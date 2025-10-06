@@ -24,6 +24,11 @@ add_executable(ctier_client
 target_include_directories(ctier_server PRIVATE src/socket)
 target_include_directories(ctier_client PRIVATE src/socket)
 
+if(WIN32)
+    target_link_libraries(ctier_server PRIVATE ws2_32)
+    target_link_libraries(ctier_client PRIVATE ws2_32)
+endif()
+
 # Compiler warnings
 #foreach(target ctier_server ctier_client)
 #    target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic -Werror)

@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libthirdlib.a CMakeFiles/thirdlib.dir/websock.cpp.o
-/usr/bin/ranlib ../../lib/libthirdlib.a

@@ -3,19 +3,12 @@
 #include <stdexcept>
 
 #include "server/server.h"
+#include "socket/websock.h"
 
 int main()
 {
     try
     {
-#if IS_WINDOWS
-        WSADATA _wsa_data{};
-        auto    iResult = WSAStartup(MAKEWORD(2, 2), &_wsa_data);
-        if (iResult != 0)
-        {
-            printf("WSAStartup failed: %d\n", iResult);
-        }
-#endif
         // Allocate server safely on the stack
         ctier::Server server("127.0.0.1", "1234", AF_INET, SOCK_STREAM, 0);
 
@@ -65,8 +58,6 @@ int main()
         std::cerr << "Server initialization failed: " << e.what() << std::endl;
         return 1;
     }
-#if IS_WINDOWS
-    WSACleanup();
-#endif
+
     return 0;
 }
