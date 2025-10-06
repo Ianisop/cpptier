@@ -109,89 +109,99 @@ bool ctier::WebSock::suspend()
 }
 #endif
 // used to set the servers hosting address up, usually 0.0.0.0 but you can be more specific
-bool ctier::WebSock::bind(const char* address, const char* port)
+bool ctier::WebSock::bind(const char* address, const char* port, bool server = true)
 {
 #if IS_WINDOWS
-    const sockaddr* addr = nullptr;
-    addrinfo        hints{};
-    addrinfo*       result = nullptr;
-    getaddrinfo(address, port, &hints, &result);
+    addrinfo hints{};
+    hints.ai_family = AF_INET;       // IPv4
+    hints.ai_socktype = SOCK_STREAM; // TCP
+    if(server) hints.ai_flags = AI_PASSIVE;     // For server
 
-    iResult = ::bind(_socket, result->ai_addr, (int) result->ai_addrlen);
-
-    if (iResult == SOCKET_ERROR)
-    {
-        printf("bind failed with error: %d\n", WSAGetLastError());
-        freeaddrinfo(result);
-        closesocket(_socket);
-        WSACleanup();
+    addrinfo* result = nullptr;
+    iResult = getaddrinfo(address, port, &hints, &result);
+    if (iResult != 0) {
+        printf("getaddrinfo failed: %d\n", iResult);
         return false;
     }
-#else
-    u_short port_num = static_cast<u_short>(std::atoi(port));
 
+    iResult = ::bind(_socket, result->ai_addr, (int)result->ai_addrlen);
+    if (iResult == SOCKET_ERROR) {
+        printf("bind failed with error: %d\n", WSAGetLastError());
+        freeaddrinfo(result);
+        return false;
+    }
+
+    freeaddrinfo(result);
+#else
     sockaddr_in hint{};
     hint.sin_family = AF_INET;
-    hint.sin_port   = htons(port_num);
+    hint.sin_port   = htons(static_cast<u_short>(std::atoi(port)));
 
-    if (inet_aton(address, &hint.sin_addr) == 0)
+    if (inet_pton(AF_INET, address, &hint.sin_addr) <= 0)
         return false;
 
-    if (::bind(_socket, reinterpret_cast<sockaddr*>(&hint), sizeof(hint)) < 0)
-    {
+    if (::bind(_socket, reinterpret_cast<sockaddr*>(&hint), sizeof(hint)) < 0) {
         perror("bind failed");
         return false;
     }
 #endif
-    std::cout << "boud to " << address << "\n";
+
+    std::cout << "Bound to " << address << ":" << port << "\n";
     return true;
 }
+
 
 int ctier::WebSock::accept(sockaddr_in* clientAddr)
 {
 #if IS_WINDOWS
-    if (_socket == INVALID_SOCKET) return INVALID_SOCKET;
+    if (_socket == INVALID_SOCKET)
+        return INVALID_SOCKET;
 
-    int len = clientAddr ? sizeof(*clientAddr) : 0;
-    SOCKET clientSock = ::accept(_socket,
-                                 clientAddr ? reinterpret_cast<sockaddr*>(clientAddr) : nullptr,
-                                 clientAddr ? &len : nullptr);
+    int    len = clientAddr ? sizeof(sockaddr_in) : 0;
+    SOCKET clientSock =
+        ::accept(_socket, clientAddr ? reinterpret_cast<sockaddr*>(clientAddr) : nullptr, clientAddr ? &len : nullptr);
+
     if (clientSock == INVALID_SOCKET)
         printf("Accept failed: %d\n", WSAGetLastError());
 
     return static_cast<int>(clientSock);
-#else
-    if (_socket < 0) return -1;
 
-    if (clientAddr) {
-        socklen_t len = sizeof(*clientAddr);
-        int clientSock = ::accept(_socket, reinterpret_cast<sockaddr*>(clientAddr), &len);
-        if (clientSock < 0) perror("Accept failed");
-        return clientSock;
-    } else {
-        // No address requested, pass nullptr and nullptr
-        int clientSock = ::accept(_socket, nullptr, nullptr);
-        if (clientSock < 0) perror("Accept failed");
-        return clientSock;
-    }
+#else
+    if (_socket < 0)
+        return -1;
+
+    socklen_t len = clientAddr ? sizeof(sockaddr_in) : 0;
+    int       clientSock =
+        ::accept(_socket, clientAddr ? reinterpret_cast<sockaddr*>(clientAddr) : nullptr, clientAddr ? &len : nullptr);
+
+    if (clientSock < 0)
+        perror("Accept failed");
+
+    return clientSock;
 #endif
 }
 
 bool ctier::WebSock::listen(int backlog)
 {
-    int result = ::listen(_socket, backlog);
+    if (::listen(_socket, backlog) < 0)
+    {
 #if IS_WINDOWS
-    if (result == SOCKET_ERROR) {
         printf("Listen failed with error: %ld\n", WSAGetLastError());
-        closesocket(_socket);
-        WSACleanup();
-        return false;
-    }
 #else
-    if (result < 0) {
         perror("Listen failed");
+#endif
         return false;
     }
-#endif
     return true;
+}
+
+void ctier::WebSock::close_socket(bool reuse)
+{
+#if IS_WINDOWS
+    closesocket(_socket);
+    WSACleanup();
+#else
+    close(_socket);
+    signal(SIGCHLD, SIG_IGN);
+#endif
 }

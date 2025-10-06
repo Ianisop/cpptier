@@ -75,7 +75,7 @@ namespace ctier
         }
 
         bool connect(const char* address, const char* port);
-        bool bind(const char* address, const char* port);
+        bool bind(const char* address, const char* port, bool server);
         bool send(const char* data, size_t size);
         bool receive(char* buffer, size_t size);
         bool listen(int backlog = 5);
