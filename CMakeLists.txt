@@ -7,6 +7,22 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+include(FetchContent)
+
+# Import fxtui
+FetchContent_Declare(
+    ftxui
+    GIT_REPOSITORY https://github.com/ArthurSonzogni/FTXUI.git
+    GIT_TAG v6.1.9
+)
+
+# Avoid re-declaring/populating multiple times
+FetchContent_GetProperties(ftxui)
+if(NOT ftxui_POPULATED)
+  FetchContent_Populate(ftxui)
+  add_subdirectory(${ftxui_SOURCE_DIR} ${ftxui_BINARY_DIR})
+endif()
+
 
 # Build executables
 add_executable(ctier_server
@@ -14,6 +30,7 @@ add_executable(ctier_server
     src/server/server.cpp
     src/socket/websock.cpp
 )
+
 add_executable(ctier_client
     src/c_tier_client.cpp
     src/client/client.cpp
@@ -23,6 +40,18 @@ add_executable(ctier_client
 # Include paths
 target_include_directories(ctier_server PRIVATE src/socket)
 target_include_directories(ctier_client PRIVATE src/socket)
+
+target_link_libraries(ctier_server
+  PRIVATE ftxui::screen
+  PRIVATE ftxui::dom
+  # PRIVATE ftxui::component  # only if using component module
+)
+
+target_link_libraries(ctier_client
+  PRIVATE ftxui::screen
+  PRIVATE ftxui::dom
+  # PRIVATE ftxui::component  # only if using component module
+)
 
 if(WIN32)
     target_link_libraries(ctier_server PRIVATE ws2_32)

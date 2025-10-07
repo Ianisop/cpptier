@@ -7,6 +7,7 @@
 namespace ctier
 {
     static int g_wsa_initialized = 0;
+
     WebSock::WebSock(int domain, int type, int protocol) : _socket(INVALID_SOCKET_VALUE)
     {
 #if IS_WINDOWS
@@ -15,13 +16,14 @@ namespace ctier
             WSADATA wsaData;
             if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
                 throw std::runtime_error("WSAStartup failed");
-#endif 
             g_wsa_initialized = 1;
         }
+#endif
         create(domain, type, protocol);
     }
-    
+
     WebSock::WebSock(int fd) : _socket(static_cast<socket_t>(fd)) {}
+
     WebSock::~WebSock()
     {
         close_socket();
@@ -80,6 +82,7 @@ namespace ctier
         if (getaddrinfo(address, port, &hints, &res) != 0)
             return false;
 
+        std::cout << "address validated!\n";
         bool ok = (::connect(_socket, res->ai_addr, (socklen_t) res->ai_addrlen) == 0);
         freeaddrinfo(res);
         return ok;
@@ -89,15 +92,15 @@ namespace ctier
     {
         if (!valid())
             return false;
-        int sent = ::send(_socket, buffer, (int) size, 0);
-        return (sent == (int) size);
+        int sent = ::send(_socket, buffer, static_cast<int>(size), 0);
+        return (sent == static_cast<int>(size));
     }
 
     int WebSock::receive(char* buffer, size_t size)
     {
         if (!valid())
             return -1;
-        return ::recv(_socket, buffer, (int) size, 0);
+        return ::recv(_socket, buffer, static_cast<int>(size), 0);
     }
 
     void WebSock::close_socket()
@@ -115,9 +118,14 @@ namespace ctier
     void WebSock::cleanup()
     {
 #if IS_WINDOWS
-        WSACleanup();
+        if (g_wsa_initialized)
+        {
+            WSACleanup();
+            g_wsa_initialized = 0;
+        }
 #endif
     }
+
     bool WebSock::valid() const
     {
 #if IS_WINDOWS
@@ -126,5 +134,4 @@ namespace ctier
         return _socket >= 0;
 #endif
     }
-
 }  // namespace ctier

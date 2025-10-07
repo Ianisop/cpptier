@@ -9,8 +9,7 @@ int main()
     if (client.connect("127.0.0.1", "1234"))
     {
         std::cout << "connected!\n";
-        client.sendData("yooo", 4);
-        std::cout << "sent payload\n";
+        client.sendData("hello", 4);
     }
     else
     {

@@ -25,7 +25,7 @@ namespace ctier
 
     class WebSock
     {
-     
+
       public:
         WebSock(int domain, int type, int protocol);
         WebSock(int fd);
