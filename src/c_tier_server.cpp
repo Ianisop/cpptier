@@ -7,8 +7,29 @@
 #include "socket/websock.h"
 #include "sslwebsock.h"
 
+#include <ftxui/dom/elements.hpp>
+#include <ftxui/screen/screen.hpp>
+#include <ftxui/screen/color.hpp>
+#include <ftxui/component/component.hpp>
+#include <ftxui/component/screen_interactive.hpp>
+
 int main()
 {
+    auto screen = ftxui::ScreenInteractive::Fullscreen();
+
+    int counter = 0;
+    auto button = ftxui::Button("Click me", [&] { counter++; });
+
+    auto renderer = ftxui::Renderer(button, [&] {
+        return ftxui::vbox({
+            ftxui::text("Counter: " + std::to_string(counter)),
+            ftxui::separator(),
+            button->Render(),
+        }) | ftxui::border;
+    });
+
+    screen.Loop(renderer);
+    /*
     try
     {
         // Allocate server safely on the stack
@@ -78,5 +99,6 @@ int main()
         return 1;
     }
     ctier::WebSock::cleanup();
+    */
     return 0;
 }
