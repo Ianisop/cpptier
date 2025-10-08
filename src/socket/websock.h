@@ -1,5 +1,6 @@
 #pragma once
 
+#include "sslwebsock.h"
 #if defined(_WIN32) || defined(_WIN64)
 #define IS_WINDOWS 1
 #include <winsock2.h>
@@ -28,7 +29,7 @@ namespace ctier
     class WebSock
     {
       public:
-        WebSock(int domain, int type, int protocol);
+        WebSock(int domain, int type, int protocol, bool ssl_socket, bool server);
         WebSock(int fd);
         ~WebSock();
 
@@ -40,6 +41,7 @@ namespace ctier
         bool        send(const char* buffer, size_t size);
         int         receive(char* buffer, size_t size);
         void        close_socket();
+        SSLWebSock*  get_ssl();
         int get_socket();
         static void cleanup();
         bool        valid() const;
@@ -53,6 +55,8 @@ namespace ctier
         static constexpr socket_t INVALID_SOCKET_VALUE = -1;
 #endif
         socket_t _socket;
+        bool _ssl = false;
+        SSLWebSock* _ssl_socket;
     };
 
 }  // namespace ctier

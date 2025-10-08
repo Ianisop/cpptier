@@ -15,8 +15,8 @@ namespace ctier
 
       public:
         // creates the socket on the heap and takes ownership
-        Server(const char* address, const char* port, int domain, int type, int protocol) :
-            _listening_socket(std::make_unique<WebSock>(domain, type, protocol))
+        Server(const char* address, const char* port, int domain, int type, int protocol, bool ssl) :
+            _listening_socket(std::make_unique<WebSock>(domain, type, protocol, ssl, true))
         {
             if (!_listening_socket->bind(address, port))
                 throw std::runtime_error("Bind failed");
@@ -36,16 +36,16 @@ namespace ctier
         Server& operator=(Server&&) noexcept = default;
 
         // Accessor for the socket (non-owning)
-        WebSock* getSocket() const { return _listening_socket.get(); }
+        WebSock* get_socket() const { return _listening_socket.get(); }
 
-        bool sendData(const char* data, size_t size)
+        bool send_data(const char* data, size_t size)
         {
             if (!_listening_socket)
                 return false;
             return _listening_socket->send(data, size);
         }
 
-        bool receiveData(char* buffer, size_t size)
+        bool receive_data(char* buffer, size_t size)
         {
             if (!_listening_socket)
                 return false;

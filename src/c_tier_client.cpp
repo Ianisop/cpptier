@@ -6,7 +6,7 @@
 #include <iostream>
 
 #include "client/client.h"
-#include "sslwebsock.h"
+
 using namespace ftxui;
 
 int main()
@@ -35,7 +35,7 @@ int main()
 
     screen.Loop(ui);
     */
-    auto client = ctier::Client(AF_INET, SOCK_STREAM, 0);
+    auto client = ctier::Client(AF_INET, SOCK_STREAM, 0, true);
 
     std::cout << "client ready!\n";
     if (client.connect("127.0.0.1", "443"))
@@ -48,22 +48,18 @@ int main()
     }
     char buffer[1024];
 
-    SSLWebSock SSL_client(false);
-    if(!SSL_client.init())
-        throw std::runtime_error("SSL INIT FAILED!\n");
 
-    if(!SSL_client.attach((int)client.get_web_socket()->get_socket()))
-        throw std::runtime_error("SSL Handshake failed\n");
-
-    SSL_client.send("hello", 5);
+    client.send_data("hello", 5);
     while (true)
     {
-        if(SSL_client.receive(buffer, sizeof(buffer)))
+        if(client.receive(buffer, sizeof(buffer)))
         {
             std::cout << "received: " << buffer << "\n";
+            client.close();
+            return 0;
         }
     }
-    SSL_client.close();
-    std::cout << "connection closed!\n";
+
+
     return 0;
 }
