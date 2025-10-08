@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 
-#include "websock.h"
+#include "sslwebsock.h"
 
 namespace ctier
 {
@@ -24,17 +24,20 @@ namespace ctier
         Client& operator=(Client&&) noexcept = default;
 
         // Accessor for the socket (non-owning)
-        WebSock* getSocket() const { return _socket.get(); }
+        WebSock* get_web_socket() const { return _socket.get(); }
 
-        bool sendData(const char* data, size_t size)
+        bool send_data(const char* data, size_t size)
         {
             if (!_socket)
                 return false;
             return _socket->send(data, size);
         }
 
-        bool receiveData(char* buffer, size_t size)
-        {
+        bool receive_data(char* buffer, size_t size)
+        {    SSL_library_init();
+        SSL_load_error_strings();
+        OpenSSL_add_all_algorithms();
+
             if (!_socket)
                 return false;
             return _socket->receive(buffer, size);

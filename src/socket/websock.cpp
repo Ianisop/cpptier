@@ -88,6 +88,12 @@ namespace ctier
         return ok;
     }
 
+    int WebSock::get_socket()
+    {
+        return (int)_socket;
+    }
+
+
     bool WebSock::send(const char* buffer, size_t size)
     {
         if (!valid())

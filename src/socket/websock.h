@@ -10,6 +10,8 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <openssl/err.h>
+#include <openssl/ssl.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -25,22 +27,22 @@ namespace ctier
 
     class WebSock
     {
-
       public:
         WebSock(int domain, int type, int protocol);
         WebSock(int fd);
         ~WebSock();
 
-        bool    create(int domain = AF_INET, int type = SOCK_STREAM, int protocol = 0);
-        bool    bind(const char* address, const char* port);
-        bool    listen(int backlog = 5);
-        int     accept(sockaddr_in* clientAddr = nullptr);
-        bool    connect(const char* address, const char* port);
-        bool    send(const char* buffer, size_t size);
-        int receive(char* buffer, size_t size);
-        void    close_socket();
-        static void    cleanup();
-        bool    valid() const;
+        bool        create(int domain = AF_INET, int type = SOCK_STREAM, int protocol = 0);
+        bool        bind(const char* address, const char* port);
+        bool        listen(int backlog = 5);
+        int         accept(sockaddr_in* clientAddr = nullptr);
+        bool        connect(const char* address, const char* port);
+        bool        send(const char* buffer, size_t size);
+        int         receive(char* buffer, size_t size);
+        void        close_socket();
+        int get_socket();
+        static void cleanup();
+        bool        valid() const;
 
       private:
 #if IS_WINDOWS

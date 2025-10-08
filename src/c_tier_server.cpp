@@ -4,13 +4,14 @@
 
 #include "server/server.h"
 #include "socket/websock.h"
+#include "sslwebsock.h"
 
 int main()
 {
     try
     {
         // Allocate server safely on the stack
-        ctier::Server server("127.0.0.1", "1234", AF_INET, SOCK_STREAM, 0);
+        ctier::Server server("127.0.0.1", "443", AF_INET, SOCK_STREAM, 0);
 
         // Make sure server socket is ready
         if (!server.getSocket())
@@ -19,6 +20,10 @@ int main()
         }
 
         char buffer[1024];
+
+        SSLWebSock ssl_server(true);
+        if (!ssl_server.init("server.crt", "server.key"))
+            throw std::runtime_error("SSL init failed");
 
         while (true)
         {
@@ -39,14 +44,21 @@ int main()
             // Wrap client socket in a unique_ptr
             auto clientSock = std::make_unique<ctier::WebSock>(clientFD);
 
-            // Receive data from client
-            if (clientSock->receive(buffer, sizeof(buffer)))
+            SSLWebSock session(true);
+            session.set_context(ssl_server.get_context());
+            if (!session.attach(clientFD))
             {
-                std::cout << "Received data: " << buffer << std::endl;
-
-                // Respond to client
-                clientSock->send("received", 8);  // send length includes null?
+                std::cerr << "SSL handshake failed\n";
+                ::close(clientFD);
+                continue;
             }
+            if(session.receive(buffer, sizeof(buffer)))
+            {
+                std::cout << "Received: " << buffer << "\n";
+            }
+
+            session.send("OK",2);
+            session.close();
 
             // Socket will be closed automatically when clientSock goes out of scope
         }

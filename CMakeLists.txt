@@ -41,16 +41,22 @@ add_executable(ctier_client
 target_include_directories(ctier_server PRIVATE src/socket)
 target_include_directories(ctier_client PRIVATE src/socket)
 
+find_package(OpenSSL REQUIRED)
+
 target_link_libraries(ctier_server
   PRIVATE ftxui::screen
   PRIVATE ftxui::dom
-  # PRIVATE ftxui::component  # only if using component module
+  PRIVATE ftxui::component
+  OpenSSL::SSL
+  OpenSSL::Crypto
 )
 
 target_link_libraries(ctier_client
   PRIVATE ftxui::screen
   PRIVATE ftxui::dom
-  # PRIVATE ftxui::component  # only if using component module
+  PRIVATE ftxui::component
+  OpenSSL::SSL
+  OpenSSL::Crypto
 )
 
 if(WIN32)
