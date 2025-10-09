@@ -9,6 +9,7 @@
 #include "scenes/scene.h"
 #include "scenes/login_menu.h"
 #include "scenes/scene_manager.h"
+#include "scenes/main_menu.h"
 
 using namespace ftxui;
 
@@ -18,9 +19,9 @@ int main()
 
     SceneManager manager;
     manager.register_scene("login", std::make_unique<ctier::LoginScene>(&manager));
-    //manager.register_scene("main", std::make_unique<MainScene>(&manager));
+    manager.register_scene("main", std::make_unique<ctier::MainScene>(&manager));
 
-    manager.switch_to("login");
+    manager.switch_to("login",&screen); // always start on login
 
     auto app = CatchEvent(
         Renderer([&] {

@@ -12,10 +12,10 @@ public:
         scenes_[name] = std::move(scene);
     }
 
-    void switch_to(const std::string& name) {
+    void switch_to(const std::string& name,ftxui::ScreenInteractive* screen) {
         if (current_) current_->on_exit();
         current_ = scenes_[name].get();
-        if (current_) current_->on_enter();
+        if (current_) current_->on_enter(screen);
     }
 
     Scene* current() { return current_; }

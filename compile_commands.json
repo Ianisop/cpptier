@@ -1,39 +1,51 @@
 [
 {
   "directory": "/home/fishy/Documents/cpptier/build",
-  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o -c /home/fishy/Documents/cpptier/src/c_tier_server.cpp",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier -I/home/fishy/Documents/cpptier/src -I/home/fishy/Documents/cpptier/src/socket -I/home/fishy/Documents/cpptier/src/database -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3 -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o -c /home/fishy/Documents/cpptier/src/c_tier_server.cpp",
   "file": "/home/fishy/Documents/cpptier/src/c_tier_server.cpp",
   "output": "CMakeFiles/ctier_server.dir/src/c_tier_server.cpp.o"
 },
 {
   "directory": "/home/fishy/Documents/cpptier/build",
-  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_server.dir/src/server/server.cpp.o -c /home/fishy/Documents/cpptier/src/server/server.cpp",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier -I/home/fishy/Documents/cpptier/src -I/home/fishy/Documents/cpptier/src/socket -I/home/fishy/Documents/cpptier/src/database -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3 -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_server.dir/src/server/server.cpp.o -c /home/fishy/Documents/cpptier/src/server/server.cpp",
   "file": "/home/fishy/Documents/cpptier/src/server/server.cpp",
   "output": "CMakeFiles/ctier_server.dir/src/server/server.cpp.o"
 },
 {
   "directory": "/home/fishy/Documents/cpptier/build",
-  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_server.dir/src/socket/websock.cpp.o -c /home/fishy/Documents/cpptier/src/socket/websock.cpp",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier -I/home/fishy/Documents/cpptier/src -I/home/fishy/Documents/cpptier/src/socket -I/home/fishy/Documents/cpptier/src/database -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3 -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_server.dir/src/socket/websock.cpp.o -c /home/fishy/Documents/cpptier/src/socket/websock.cpp",
   "file": "/home/fishy/Documents/cpptier/src/socket/websock.cpp",
   "output": "CMakeFiles/ctier_server.dir/src/socket/websock.cpp.o"
 },
 {
   "directory": "/home/fishy/Documents/cpptier/build",
-  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o -c /home/fishy/Documents/cpptier/src/c_tier_client.cpp",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier -I/home/fishy/Documents/cpptier/src -I/home/fishy/Documents/cpptier/src/socket -I/home/fishy/Documents/cpptier/src/database -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3 -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_server.dir/src/database/database.cpp.o -c /home/fishy/Documents/cpptier/src/database/database.cpp",
+  "file": "/home/fishy/Documents/cpptier/src/database/database.cpp",
+  "output": "CMakeFiles/ctier_server.dir/src/database/database.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier -I/home/fishy/Documents/cpptier/src -I/home/fishy/Documents/cpptier/src/socket -I/home/fishy/Documents/cpptier/src/database -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3 -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o -c /home/fishy/Documents/cpptier/src/c_tier_client.cpp",
   "file": "/home/fishy/Documents/cpptier/src/c_tier_client.cpp",
   "output": "CMakeFiles/ctier_client.dir/src/c_tier_client.cpp.o"
 },
 {
   "directory": "/home/fishy/Documents/cpptier/build",
-  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_client.dir/src/client/client.cpp.o -c /home/fishy/Documents/cpptier/src/client/client.cpp",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier -I/home/fishy/Documents/cpptier/src -I/home/fishy/Documents/cpptier/src/socket -I/home/fishy/Documents/cpptier/src/database -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3 -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_client.dir/src/client/client.cpp.o -c /home/fishy/Documents/cpptier/src/client/client.cpp",
   "file": "/home/fishy/Documents/cpptier/src/client/client.cpp",
   "output": "CMakeFiles/ctier_client.dir/src/client/client.cpp.o"
 },
 {
   "directory": "/home/fishy/Documents/cpptier/build",
-  "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/src/socket -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o -c /home/fishy/Documents/cpptier/src/socket/websock.cpp",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier -I/home/fishy/Documents/cpptier/src -I/home/fishy/Documents/cpptier/src/socket -I/home/fishy/Documents/cpptier/src/database -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3 -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o -c /home/fishy/Documents/cpptier/src/socket/websock.cpp",
   "file": "/home/fishy/Documents/cpptier/src/socket/websock.cpp",
   "output": "CMakeFiles/ctier_client.dir/src/socket/websock.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier -I/home/fishy/Documents/cpptier/src -I/home/fishy/Documents/cpptier/src/socket -I/home/fishy/Documents/cpptier/src/database -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3 -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIE -o CMakeFiles/ctier_client.dir/src/database/database.cpp.o -c /home/fishy/Documents/cpptier/src/database/database.cpp",
+  "file": "/home/fishy/Documents/cpptier/src/database/database.cpp",
+  "output": "CMakeFiles/ctier_client.dir/src/database/database.cpp.o"
 },
 {
   "directory": "/home/fishy/Documents/cpptier/build/_deps/ftxui-build",
@@ -472,5 +484,53 @@
   "command": "/usr/bin/c++  -I/home/fishy/Documents/cpptier/build/_deps/ftxui-src/src -isystem /home/fishy/Documents/cpptier/build/_deps/ftxui-src/include -O3 -DNDEBUG -std=gnu++20 -fPIC -o CMakeFiles/component.dir/src/ftxui/component/window.cpp.o -c /home/fishy/Documents/cpptier/build/_deps/ftxui-src/src/ftxui/component/window.cpp",
   "file": "/home/fishy/Documents/cpptier/build/_deps/ftxui-src/src/ftxui/component/window.cpp",
   "output": "_deps/ftxui-build/CMakeFiles/component.dir/src/ftxui/component/window.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-build",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3  -Wall -Wextra -Wpedantic -Wswitch-enum -Wshadow -Wno-long-long -O3 -DNDEBUG -std=gnu++20 -fPIC -fPIC -fstack-protector -o CMakeFiles/SQLiteCpp.dir/src/Backup.cpp.o -c /home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Backup.cpp",
+  "file": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Backup.cpp",
+  "output": "_deps/sqlitecpp-build/CMakeFiles/SQLiteCpp.dir/src/Backup.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-build",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3  -Wall -Wextra -Wpedantic -Wswitch-enum -Wshadow -Wno-long-long -O3 -DNDEBUG -std=gnu++20 -fPIC -fPIC -fstack-protector -o CMakeFiles/SQLiteCpp.dir/src/Column.cpp.o -c /home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Column.cpp",
+  "file": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Column.cpp",
+  "output": "_deps/sqlitecpp-build/CMakeFiles/SQLiteCpp.dir/src/Column.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-build",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3  -Wall -Wextra -Wpedantic -Wswitch-enum -Wshadow -Wno-long-long -O3 -DNDEBUG -std=gnu++20 -fPIC -fPIC -fstack-protector -o CMakeFiles/SQLiteCpp.dir/src/Database.cpp.o -c /home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Database.cpp",
+  "file": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Database.cpp",
+  "output": "_deps/sqlitecpp-build/CMakeFiles/SQLiteCpp.dir/src/Database.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-build",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3  -Wall -Wextra -Wpedantic -Wswitch-enum -Wshadow -Wno-long-long -O3 -DNDEBUG -std=gnu++20 -fPIC -fPIC -fstack-protector -o CMakeFiles/SQLiteCpp.dir/src/Exception.cpp.o -c /home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Exception.cpp",
+  "file": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Exception.cpp",
+  "output": "_deps/sqlitecpp-build/CMakeFiles/SQLiteCpp.dir/src/Exception.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-build",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3  -Wall -Wextra -Wpedantic -Wswitch-enum -Wshadow -Wno-long-long -O3 -DNDEBUG -std=gnu++20 -fPIC -fPIC -fstack-protector -o CMakeFiles/SQLiteCpp.dir/src/Savepoint.cpp.o -c /home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Savepoint.cpp",
+  "file": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Savepoint.cpp",
+  "output": "_deps/sqlitecpp-build/CMakeFiles/SQLiteCpp.dir/src/Savepoint.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-build",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3  -Wall -Wextra -Wpedantic -Wswitch-enum -Wshadow -Wno-long-long -O3 -DNDEBUG -std=gnu++20 -fPIC -fPIC -fstack-protector -o CMakeFiles/SQLiteCpp.dir/src/Statement.cpp.o -c /home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Statement.cpp",
+  "file": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Statement.cpp",
+  "output": "_deps/sqlitecpp-build/CMakeFiles/SQLiteCpp.dir/src/Statement.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-build",
+  "command": "/usr/bin/c++ -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/include -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3  -Wall -Wextra -Wpedantic -Wswitch-enum -Wshadow -Wno-long-long -O3 -DNDEBUG -std=gnu++20 -fPIC -fPIC -fstack-protector -o CMakeFiles/SQLiteCpp.dir/src/Transaction.cpp.o -c /home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Transaction.cpp",
+  "file": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/src/Transaction.cpp",
+  "output": "_deps/sqlitecpp-build/CMakeFiles/SQLiteCpp.dir/src/Transaction.cpp.o"
+},
+{
+  "directory": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-build/sqlite3",
+  "command": "/usr/bin/cc -DSQLITE_ENABLE_COLUMN_METADATA -I/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3 -O3 -DNDEBUG -fPIC -fPIC -fstack-protector -ffunction-sections -Wimplicit-fallthrough=0 -Wno-cast-function-type -o CMakeFiles/sqlite3.dir/sqlite3.c.o -c /home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3/sqlite3.c",
+  "file": "/home/fishy/Documents/cpptier/build/_deps/sqlitecpp-src/sqlite3/sqlite3.c",
+  "output": "_deps/sqlitecpp-build/sqlite3/CMakeFiles/sqlite3.dir/sqlite3.c.o"
 }
 ]
